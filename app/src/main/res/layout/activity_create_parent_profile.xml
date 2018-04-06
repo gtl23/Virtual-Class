@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#BCAAA4"
+    tools:context="com.sandfoil.virtualclass.CreateParentProfile">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/create_account"
+        android:alpha="0.1" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/create_profile_parent_phone_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Parent Phone Number"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:layout_marginBottom="24dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/create_profile_parent_name_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Child's Name"
+            android:layout_marginBottom="16dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/create_profile_parent_child_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName|textCapWords"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/create_profile_parent_stream_spinner"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+            </Spinner>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Batch (YYYY-YYYY)">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/create_profile_parent_batch_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPhonetic"
+                    android:maxLength="9"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"/>
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="College Roll"
+            android:layout_marginBottom="24dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/create_profile_parent_college_roll_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:layout_marginBottom="32dp"
+            app:passwordToggleEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/create_profile_parent_password_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/create_profile_parent_create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:drawableRight="@drawable/create_profile_button_icon"
+            android:paddingRight="16dp"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            android:background="@drawable/capsule"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

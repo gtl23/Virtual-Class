@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#BCAAA4"
+    tools:context="com.sandfoil.virtualclass.StudentAuthentication">
+
+    <ImageView
+        android:id="@+id/not_verified_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/not_verified"
+        android:alpha="0.1" />
+
+    <ImageView
+        android:id="@+id/verified_user"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/verified"
+        android:alpha="0.1" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="8dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:layout_marginTop="82dp"
+            android:layout_marginBottom="42dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/student_phone_number_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textSize="30sp"
+                android:maxLength="10"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/student_verification_sendotp_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/capsule"
+            android:text="Send OTP"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="One Time Password"
+            android:layout_marginBottom="42dp">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/student_phone_otp_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/student_verification_verify_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/capsule"
+            android:text="Verify"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:layout_marginBottom="46dp"/>
+
+        <Button
+            android:id="@+id/student_verification_resendotp_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend OTP"
+            android:textAllCaps="false"
+            android:textSize="30sp"
+            android:background="@drawable/capsule"
+            android:layout_marginBottom="16dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

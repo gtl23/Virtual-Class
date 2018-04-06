@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sandfoil.virtualclass">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:resizeableActivity="false"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Designation"
+            android:label="Select Designation"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".StudentAuthentication"
+            android:label="Student Authentication"
+            android:parentActivityName=".Designation"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Designation" />
+        </activity>
+        <activity
+            android:name=".ParentAuthentication"
+            android:label="Parent Authentication"
+            android:parentActivityName=".Designation"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Designation" />
+        </activity>
+        <activity
+            android:name=".FacultyAuthentication"
+            android:label="Faculty Authentication"
+            android:parentActivityName=".Designation"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Designation" />
+        </activity>
+        <activity
+            android:name=".CreateStudentProfile"
+            android:label="Create Your Profile"
+            android:parentActivityName=".StudentAuthentication"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StudentAuthentication" />
+        </activity>
+        <activity
+            android:name=".CreateParentProfile"
+            android:label="Create Your Profile"
+            android:parentActivityName=".ParentAuthentication"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ParentAuthentication" />
+        </activity>
+        <activity
+            android:name=".CreateFacultyProfile"
+            android:label="Create Your Profile"
+            android:parentActivityName=".FacultyAuthentication"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".FacultyAuthentication" />
+        </activity>
+        <activity
+            android:name=".StudentLogin"
+            android:label="Student Login"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+            android:name=".ParentLogin"
+            android:label="Parent Login"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+        <activity
+            android:name=".FacultyLogin"
+            android:label="Faculty Login"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+    </application>
+
+</manifest>

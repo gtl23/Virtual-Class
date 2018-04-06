@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Virtual Class</string>
+    <string-array name="stream_array">
+        <item>Computer Science, Section - A</item>
+        <item>Computer Science, Section - B</item>
+        <item>Information Technology</item>
+        <item>Electrical</item>
+        <item>Electronics and Communication, Section - A</item>
+        <item>Electronics and Communication, Section - B</item>
+        <item>Master of Computer Applications</item>
+    </string-array>
+
+    <string-array name="department_array">
+        <item>Physics</item>
+        <item>Electrical</item>
+        <item>Humanities</item>
+        <item>Mathematics</item>
+        <item>Computer Science</item>
+        <item>Information Technology</item>
+        <item>Electronics and Communication</item>
+    </string-array>
+</resources>

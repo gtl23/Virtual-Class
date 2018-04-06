@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/home"
+    tools:context="com.sandfoil.virtualclass.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login as:"
+        android:background="@drawable/circle"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:background="@drawable/capsule"
+        android:layout_marginBottom="16dp"
+        android:onClick="openStudentLoginActivity"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parent"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:background="@drawable/capsule"
+        android:layout_marginBottom="16dp"
+        android:onClick="openParentLoginActivity"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faculty"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:background="@drawable/capsule"
+        android:layout_marginBottom="16dp"
+        android:onClick="openFacultyLoginActivity"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="2dp"
+            android:background="@android:color/holo_red_light"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Or"
+            android:fontFamily="cursive"
+            android:textAllCaps="false"
+            android:textSize="28sp"
+            android:textColor="@android:color/holo_red_light"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="2dp"
+            android:background="@android:color/holo_red_light"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up !"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:onClick="openDesignationSelectionActivity"
+        android:background="@drawable/capsule"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>
