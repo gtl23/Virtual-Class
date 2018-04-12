@@ -36,6 +36,7 @@ public class CreateFacultyProfile extends AppCompatActivity implements AdapterVi
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
         Spinner createProfileFacultyDepartmentSpinner = findViewById(R.id.create_profile_faculty_department_spinner);
+        createProfileFacultyDepartmentSpinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> createProfileFacultyDepartmentAdapter = ArrayAdapter.createFromResource(this,
                 R.array.department_array, android.R.layout.simple_spinner_item);
 

@@ -42,6 +42,7 @@ public class CreateParentProfile extends AppCompatActivity implements AdapterVie
         /* setting the contents for the stream dropdown menu */
 
         Spinner createProfileParentStreamSpinner = findViewById(R.id.create_profile_parent_stream_spinner);
+        createProfileParentStreamSpinner.setOnItemSelectedListener(this);
         ArrayAdapter<CharSequence> createProfileParentStreamAdapter = ArrayAdapter.createFromResource(this,
                 R.array.stream_array, android.R.layout.simple_spinner_item);
 
