@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,21 +29,27 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
 public class StudentAuthentication extends AppCompatActivity implements View.OnClickListener {
 
-    EditText mPhoneNumberField, mVerificationField;
-    Button mStartButton, mVerifyButton, mResendButton;
-    ImageView verifiedUser, notVerifiedUser;
+    private EditText mPhoneNumberField, mVerificationField;
+    private Button mStartButton, mVerifyButton, mResendButton;
+    private ImageView verifiedUser, notVerifiedUser;
 
     private FirebaseAuth mAuth;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    String mVerificationId;
+    private String mVerificationId;
 
     private static final String TAG = "StudentAuthentication";
+    private final String countryCode = "+91";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -186,13 +193,30 @@ public class StudentAuthentication extends AppCompatActivity implements View.OnC
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.student_verification_sendotp_button:
-                if (!validatePhoneNumber()) {
-                    return;
-                }
-                mStartButton.setVisibility(View.GONE);
-                mVerifyButton.setVisibility(View.VISIBLE);
-                mResendButton.setVisibility(View.VISIBLE);
-                startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final DatabaseReference student_table = database.getReference("STUDENT");
+                student_table.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!validatePhoneNumber()){
+//                            return;
+                        } else if (dataSnapshot.child(countryCode + mPhoneNumberField.getText().toString()).exists()) {
+                            Toast.makeText(StudentAuthentication.this, "Already Registered.", Toast.LENGTH_SHORT).show();
+//                            return;
+                        } else {
+                            mStartButton.setVisibility(View.GONE);
+                            mVerifyButton.setVisibility(View.VISIBLE);
+                            mResendButton.setVisibility(View.VISIBLE);
+                            startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 break;
             case R.id.student_verification_verify_button:
                 String code = mVerificationField.getText().toString();
