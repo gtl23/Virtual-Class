@@ -3,6 +3,7 @@ package com.sandfoil.virtualclass;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -95,6 +96,8 @@ public class StudentLogin extends AppCompatActivity {
                             STUDENT student = dataSnapshot.child(countryCode + studentLoginPhoneEditText.getText().toString()).getValue(STUDENT.class);
                             if (student.getPassword().equals(studentLoginPasswordEditText.getText().toString())) {
                                 Toast.makeText(StudentLogin.this, "Welcome to virtual class.", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(StudentLogin.this, StudentSpace.class));
+                                finish();
                             } else {
                                 Toast.makeText(StudentLogin.this, "Invalid Credentials.", Toast.LENGTH_SHORT).show();
                             }

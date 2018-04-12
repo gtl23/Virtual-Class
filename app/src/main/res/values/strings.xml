@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Virtual Class</string>
     <string-array name="stream_array">
+        <item>Stream</item>
         <item>Computer Science, Section - A</item>
         <item>Computer Science, Section - B</item>
         <item>Information Technology</item>
@@ -11,6 +12,7 @@
     </string-array>
 
     <string-array name="department_array">
+        <item>Department</item>
         <item>Physics</item>
         <item>Electrical</item>
         <item>Humanities</item>

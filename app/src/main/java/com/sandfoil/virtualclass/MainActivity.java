@@ -13,6 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (getIntent().getBooleanExtra("EXIT", false))
+        {
+            startActivity(new Intent(MainActivity.this,MainActivity.class));
+            finish();
+        }
     }
 
     public void openDesignationSelectionActivity(View view){

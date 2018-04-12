@@ -1,6 +1,7 @@
 package com.sandfoil.virtualclass;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -45,7 +46,7 @@ public class CreateFacultyProfile extends AppCompatActivity implements AdapterVi
          *  and setting it to the textview for database purpose other variable's identification.
          */
 
-        final TextView createProfileFacultyPhoneTextView = findViewById(R.id.create_profile_student_phone_textview);
+        final TextView createProfileFacultyPhoneTextView = findViewById(R.id.create_profile_faculty_phone_textview);
         mAuth = FirebaseAuth.getInstance();
         if(mAuth != null){
             createProfileFacultyPhoneTextView.setText(mAuth.getCurrentUser().getPhoneNumber());
@@ -57,7 +58,7 @@ public class CreateFacultyProfile extends AppCompatActivity implements AdapterVi
         /* Initialize Firebase instance */
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference faculty_table = database.getReference("PARENT");
+        final DatabaseReference faculty_table = database.getReference("FACULTY");
 
         createProfileFacultyCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +96,14 @@ public class CreateFacultyProfile extends AppCompatActivity implements AdapterVi
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        createProfileFacultyDepartment = String.valueOf(parent.getItemAtPosition(pos));
+        Spinner createProfileFacultyDepartmentSpinner = findViewById(R.id.create_profile_faculty_department_spinner);
+        if(pos == 0){
+            TextView errorText = (TextView)createProfileFacultyDepartmentSpinner.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);
+        } else {
+            createProfileFacultyDepartment = String.valueOf(parent.getItemAtPosition(pos));
+        }
     }
 
     @Override

@@ -93,7 +93,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".ParentLogin"
@@ -102,7 +102,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".FacultyLogin"
@@ -111,7 +111,19 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".StudentSpace"
+            android:label="Student">
+        </activity>
+        <activity
+            android:name=".ParentSpace"
+            android:label="Parent">
+        </activity>
+        <activity
+            android:name=".FacultySpace"
+            android:label="Faculty">
         </activity>
     </application>
 

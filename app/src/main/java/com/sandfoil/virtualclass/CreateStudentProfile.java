@@ -1,6 +1,7 @@
 package com.sandfoil.virtualclass;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -111,7 +112,14 @@ public class CreateStudentProfile extends AppCompatActivity implements AdapterVi
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        createProfileStudentStream = String.valueOf(parent.getItemAtPosition(pos));
+        Spinner createProfileStudentStreamSpinner = findViewById(R.id.create_profile_student_stream_spinner);
+        if(pos == 0){
+            TextView errorText = (TextView)createProfileStudentStreamSpinner.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);
+        } else {
+            createProfileStudentStream = String.valueOf(parent.getItemAtPosition(pos));
+        }
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.sandfoil.virtualclass;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -79,7 +80,7 @@ public class CreateParentProfile extends AppCompatActivity implements AdapterVie
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot.child(createProfileParentPhoneTextView.getText().toString()).exists()){
-                            mDialog.dismiss();
+                             mDialog.dismiss();
                             Toast.makeText(CreateParentProfile.this, "Already Registered.", Toast.LENGTH_SHORT).show();
                         } else {
                             mDialog.dismiss();
@@ -107,7 +108,14 @@ public class CreateParentProfile extends AppCompatActivity implements AdapterVie
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        createProfileParentStream = String.valueOf(parent.getItemAtPosition(pos));
+        Spinner createProfileParentStreamSpinner = findViewById(R.id.create_profile_parent_stream_spinner);
+        if(pos == 0){
+            TextView errorText = (TextView)createProfileParentStreamSpinner.getSelectedView();
+            errorText.setError("");
+            errorText.setTextColor(Color.RED);
+        } else {
+            createProfileParentStream = String.valueOf(parent.getItemAtPosition(pos));
+        }
     }
 
     @Override

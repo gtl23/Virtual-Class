@@ -3,6 +3,7 @@ package com.sandfoil.virtualclass;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -95,6 +96,8 @@ public class ParentLogin extends AppCompatActivity {
                             PARENT parent = dataSnapshot.child(countryCode + parentLoginPhoneEditText.getText().toString()).getValue(PARENT.class);
                             if(parent.getPassword().equals(parentLoginPasswordEditText.getText().toString())){
                                 Toast.makeText(ParentLogin.this, "Welcome to virtual class.", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ParentLogin.this, ParentSpace.class));
+                                finish();
                             } else {
                                 Toast.makeText(ParentLogin.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                             }

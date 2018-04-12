@@ -28,7 +28,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.google.firebase:firebase-core:11.6.2'
     implementation 'com.google.firebase:firebase-database:11.6.2'
-    implementation'com.google.firebase:firebase-auth:11.6.2'
-    implementation'com.google.firebase:firebase-messaging:11.6.2'
+    implementation 'com.google.firebase:firebase-auth:11.6.2'
+    implementation 'com.google.firebase:firebase-messaging:11.6.2'
 }
 apply plugin: 'com.google.gms.google-services'
