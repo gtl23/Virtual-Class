@@ -110,7 +110,7 @@ public class CreateStudentProfile extends AppCompatActivity implements AdapterVi
     @Override
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
+        // An item was selected from stream spinner. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         Spinner createProfileStudentStreamSpinner = findViewById(R.id.create_profile_student_stream_spinner);
         if(pos == 0){

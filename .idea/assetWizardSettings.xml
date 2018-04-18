@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/alert/ic_error_outline_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_send_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,11 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="alert_icon" />
+                            <entry key="height" value="36" />
+                            <entry key="outputName" value="send_icon" />
+                            <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\esper" />
+                            <entry key="width" value="36" />
                           </map>
                         </option>
                       </PersistentState>

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Virtual Class</string>
+    <string name="file_name">File name</string>
+    <string name="choose_file">Choose File</string>
+
     <string-array name="stream_array">
         <item>Stream</item>
         <item>Computer Science, Section - A</item>
