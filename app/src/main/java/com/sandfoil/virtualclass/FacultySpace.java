@@ -15,6 +15,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -27,6 +29,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -82,7 +85,7 @@ public class FacultySpace extends AppCompatActivity implements  AdapterView.OnIt
                  getFile();
                  break;
             case R.id.facultySpaceSendButton :
-                 sendFile(fileChoosed);
+                 chooseRecipientAndSendFile(fileChoosed);
                  break;
         }
     }
@@ -123,49 +126,30 @@ public class FacultySpace extends AppCompatActivity implements  AdapterView.OnIt
         }
     }
 
-    private void sendFile(final Uri fileChoosed){
+    private void chooseRecipientAndSendFile(final Uri fileChoosed){
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.show();
 
         switch (facultySpaceRadioGroup.getCheckedRadioButtonId()){
 
-            case R.id.facultySpaceStudentRadioButton : {
-
+            case R.id.facultySpaceStudentRadioButton :
                  if(validInputs(fileChoosed)){
-                     mDatabaseReference = FirebaseDatabase.getInstance().getReference("ASSIGNMENT")
-                             .child(facultySpaceStream).child(facultySpaceBatchEditText.getText().toString());
-                     mStorageReference = FirebaseStorage.getInstance().getReference();
-                     mStorageReference.child("ASSIGNMENT/").child(facultySpaceStream + "/")
-                             .child(facultySpaceBatchEditText.getText().toString() + "/" + fileChoosed.getLastPathSegment())
-                             .putFile(fileChoosed)
-                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                 @Override
-                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                     mProgressDialog.dismiss();
-                                     Upload upload = new Upload(facultySpaceFileNameEditText.getText().toString(), taskSnapshot.getDownloadUrl().toString());
-                                     mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(upload);
-                                     resetFields();
-                                     Toast.makeText(FacultySpace.this, "File sent successfully.", Toast.LENGTH_SHORT).show();
-                                 }
-                             })
-                             .addOnFailureListener(new OnFailureListener() {
-                                 @Override
-                                 public void onFailure(@NonNull Exception e) {
-                                     mProgressDialog.dismiss();
-                                     facultySpaceFileNameEditText.setText("");
-                                     Toast.makeText(FacultySpace.this, "Sending Failed.", Toast.LENGTH_SHORT).show();
-                                 }
-                             })
-                             .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                 @Override
-                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                     float progress = (float) ((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
-                                     mProgressDialog.setMessage(new DecimalFormat("##.#").format(progress) + "% Sending File...");
-                                 }
-                             });
+                     sendFile("ASSIGNMENT");
                  }
-            }
                  break;
+
+            case R.id.facultySpaceParentRadioButton :
+                if(validInputs(fileChoosed)){
+                    sendFile("PERFORMANCE");
+                }
+                break;
+
+            case R.id.facultySpaceBothRadioButton :
+                if(validInputs(fileChoosed)){
+                    sendFile("ASSIGNMENT");
+                    sendFile("PERFORMANCE");
+                }
+                break;
 
             default :
                 if(fileChoosed == null){
@@ -185,6 +169,40 @@ public class FacultySpace extends AppCompatActivity implements  AdapterView.OnIt
                 }
         }
 
+    }
+
+    private void sendFile(String recipient){
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference(recipient)
+                .child(facultySpaceStream).child(facultySpaceBatchEditText.getText().toString());
+        mStorageReference = FirebaseStorage.getInstance().getReference();
+        mStorageReference.child(recipient + "/").child(facultySpaceStream + "/")
+                .child(facultySpaceBatchEditText.getText().toString() + "/" + fileChoosed.getLastPathSegment())
+                .putFile(fileChoosed)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        mProgressDialog.dismiss();
+                        Upload upload = new Upload(facultySpaceFileNameEditText.getText().toString(), taskSnapshot.getDownloadUrl().toString());
+                        mDatabaseReference.child(mDatabaseReference.push().getKey()).setValue(upload);
+                        resetFields();
+                        Toast.makeText(FacultySpace.this, "File sent successfully.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        mProgressDialog.dismiss();
+                        facultySpaceFileNameEditText.setText("");
+                        Toast.makeText(FacultySpace.this, "Sending Failed.", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                        double progress = ((100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount());
+                        mProgressDialog.setMessage(new DecimalFormat("##.#").format(progress) + "% Sending File...");
+                    }
+                });
     }
 
     private void fileNotChoosed(){
@@ -251,12 +269,28 @@ public class FacultySpace extends AppCompatActivity implements  AdapterView.OnIt
         return false;
     }
 
-//    public void logoutFaculty(View view){
-//        FirebaseAuth.getInstance().signOut();
-//        Toast.makeText(this, "Logged Out..", Toast.LENGTH_SHORT).show();
-//        Intent logoutFacultyIntent = new Intent(FacultySpace.this,MainActivity.class);
-//        logoutFacultyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        logoutFacultyIntent.putExtra("EXIT", true);
-//        startActivity(logoutFacultyIntent);
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                logoutFaculty();
+                return true;
+        }
+        return false;
+    }
+
+        private void logoutFaculty(){
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(this, "Logged Out..", Toast.LENGTH_SHORT).show();
+        Intent logoutFacultyIntent = new Intent(FacultySpace.this,MainActivity.class);
+        logoutFacultyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        logoutFacultyIntent.putExtra("EXIT", true);
+        startActivity(logoutFacultyIntent);
+    }
 }

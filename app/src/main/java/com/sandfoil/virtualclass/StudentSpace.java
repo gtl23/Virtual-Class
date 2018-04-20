@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,12 +28,28 @@ public class StudentSpace extends AppCompatActivity {
         return false;
     }
 
-    public void logoutStudent(View view){
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                logoutStudent();
+                return true;
+        }
+        return false;
+    }
+
+    private void logoutStudent(){
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(this, "Logged Out..", Toast.LENGTH_SHORT).show();
-        Intent logoutStudentIntent = new Intent(StudentSpace.this,MainActivity.class);
-        logoutStudentIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        logoutStudentIntent.putExtra("EXIT", true);
-        startActivity(logoutStudentIntent);
+        Intent logoutFacultyIntent = new Intent(StudentSpace.this,MainActivity.class);
+        logoutFacultyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        logoutFacultyIntent.putExtra("EXIT", true);
+        startActivity(logoutFacultyIntent);
     }
 }

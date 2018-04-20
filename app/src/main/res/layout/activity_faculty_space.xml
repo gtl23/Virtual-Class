@@ -9,23 +9,6 @@
     android:padding="16dp"
     tools:context=".FacultySpace">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/android"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/under_construction"-->
-        <!--android:scaleType="center"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:layout_marginBottom="16dp"/>-->
-
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Logout"-->
-        <!--android:textSize="30sp"-->
-        <!--android:layout_below="@id/android"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--android:onClick="logoutFaculty"/>-->
 
     <ScrollView
         android:layout_width="match_parent"
