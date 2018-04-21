@@ -24,6 +24,7 @@ import com.sandfoil.virtualclass.virtual_class_model.FACULTY;
 
 public class CreateFacultyProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     private FirebaseAuth mAuth;
+    String uid;
     EditText createProfileFacultyNameEditText;
     String createProfileFacultyDepartment;
     EditText createProfileFacultyPasswordEditText;
@@ -77,7 +78,8 @@ public class CreateFacultyProfile extends AppCompatActivity implements AdapterVi
                         } else {
                             FACULTY faculty = new FACULTY(createProfileFacultyNameEditText.getText().toString(),
                                                           createProfileFacultyDepartment,
-                                                          createProfileFacultyPasswordEditText.getText().toString());
+                                                          createProfileFacultyPasswordEditText.getText().toString(),
+                                                          uid = FirebaseAuth.getInstance().getCurrentUser().getUid());
                             faculty_table.child(createProfileFacultyPhoneTextView.getText().toString()).setValue(faculty);
                             Toast.makeText(CreateFacultyProfile.this, "Welcome On Board :)", Toast.LENGTH_SHORT).show();
                         }

@@ -7,18 +7,21 @@ public class PARENT {
     private String Batch;
     private String College_Roll;
     private String Password;
+    private String parentId;
 
     public PARENT(){
 
     }
 
-    public PARENT(String Name, String Child_Name, String Stream, String Batch, String College_Roll, String Password){
+    public PARENT(String Name, String Child_Name, String Stream, String Batch,
+                  String College_Roll, String Password, String parentId){
         this.Name = Name;
         this.Child_Name = Child_Name;
         this.Stream = Stream;
         this.Batch = Batch;
         this.College_Roll = College_Roll;
         this.Password = Password;
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -61,5 +64,12 @@ public class PARENT {
     }
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 }

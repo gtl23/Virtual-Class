@@ -96,7 +96,8 @@ public class StudentLogin extends AppCompatActivity {
                             STUDENT student = dataSnapshot.child(countryCode + studentLoginPhoneEditText.getText().toString()).getValue(STUDENT.class);
                             if (student.getPassword().equals(studentLoginPasswordEditText.getText().toString())) {
                                 Toast.makeText(StudentLogin.this, "Welcome to virtual class.", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(StudentLogin.this, StudentSpace.class));
+                                startActivity(new Intent(StudentLogin.this, StudentSpace.class)
+                                .putExtra("PHONE", countryCode + studentLoginPhoneEditText.getText().toString()));
                                 finish();
                             } else {
                                 Toast.makeText(StudentLogin.this, "Invalid Credentials.", Toast.LENGTH_SHORT).show();

@@ -25,6 +25,7 @@ import com.sandfoil.virtualclass.virtual_class_model.PARENT;
 public class CreateParentProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private FirebaseAuth mAuth;
+    String uid;
     EditText createProfileParentNameEditText;
     EditText CreateProfileParentChildEditText;
     String createProfileParentStream;
@@ -89,7 +90,8 @@ public class CreateParentProfile extends AppCompatActivity implements AdapterVie
                                     CreateProfileParentChildEditText.getText().toString(), createProfileParentStream,
                                     createProfileParentBatchEditText.getText().toString(),
                                     createProfileParentCollegeRollEditText.getText().toString(),
-                                    createProfileParentPasswordEditText.getText().toString());
+                                    createProfileParentPasswordEditText.getText().toString(),
+                                    uid = FirebaseAuth.getInstance().getCurrentUser().getUid());
                             parent_table.child(createProfileParentPhoneTextView.getText().toString()).setValue(parent);
                             Toast.makeText(CreateParentProfile.this, "Welcome On Board :)", Toast.LENGTH_SHORT).show();
                         }

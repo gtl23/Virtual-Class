@@ -25,6 +25,7 @@ import com.sandfoil.virtualclass.virtual_class_model.STUDENT;
 public class CreateStudentProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private FirebaseAuth mAuth;
+    String uid;
     EditText createProfileStudentNameEditText;
     String createProfileStudentStream;
     EditText createProfileStudentBatchEditText;
@@ -92,7 +93,8 @@ public class CreateStudentProfile extends AppCompatActivity implements AdapterVi
                                     createProfileStudentCollegeRollEditText.getText().toString(),
                                     createProfileStudentMotherEditText.getText().toString(),
                                     createProfileStudentFatherEditText.getText().toString(),
-                                    createProfileStudentPasswordEditText.getText().toString());
+                                    createProfileStudentPasswordEditText.getText().toString(),
+                                    uid = FirebaseAuth.getInstance().getCurrentUser().getUid());
                             student_table.child(createProfileStudentPhoneTextView.getText().toString()).setValue(student);
                             Toast.makeText(CreateStudentProfile.this, "Welcome On Board :)", Toast.LENGTH_SHORT).show();
                         }

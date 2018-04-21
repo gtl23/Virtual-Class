@@ -12,7 +12,7 @@
     tools:context=".StudentSpace">
 
     <ListView
-        android:id="@+id/studentListView"
+        android:id="@+id/studentSpaceListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

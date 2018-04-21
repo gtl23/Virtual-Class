@@ -4,15 +4,17 @@ public class FACULTY {
     private String Name;
     private String Department;
     private String Password;
+    private String facultyId;
 
     public FACULTY(){
 
     }
 
-    public FACULTY(String Name,String Department, String Password){
+    public FACULTY(String Name,String Department, String Password, String facultyId){
         this.Name = Name;
         this.Department = Department;
         this.Password = Password;
+        this.facultyId = facultyId;
     }
 
     public String getName() {
@@ -34,5 +36,12 @@ public class FACULTY {
     }
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getFacultyId() {
+        return facultyId;
+    }
+    public void setFacultyId(String facultyId) {
+        this.facultyId = facultyId;
     }
 }

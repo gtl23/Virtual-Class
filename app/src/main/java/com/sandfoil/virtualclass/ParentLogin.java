@@ -96,7 +96,8 @@ public class ParentLogin extends AppCompatActivity {
                             PARENT parent = dataSnapshot.child(countryCode + parentLoginPhoneEditText.getText().toString()).getValue(PARENT.class);
                             if(parent.getPassword().equals(parentLoginPasswordEditText.getText().toString())){
                                 Toast.makeText(ParentLogin.this, "Welcome to virtual class.", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(ParentLogin.this, ParentSpace.class));
+                                startActivity(new Intent(ParentLogin.this, ParentSpace.class)
+                                        .putExtra("PHONE", countryCode + parentLoginPhoneEditText.getText().toString()));
                                 finish();
                             } else {
                                 Toast.makeText(ParentLogin.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();

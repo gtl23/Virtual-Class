@@ -8,13 +8,14 @@ public class STUDENT {
     private String Mother_Name;
     private String Father_Name;
     private String Password;
+    private String studentId;
 
     public STUDENT(){
 
     }
 
     public STUDENT(String Name, String Stream, String Batch, String College_Roll,
-                   String Mother_Name, String Father_Name ,String Password){
+                   String Mother_Name, String Father_Name ,String Password, String studentId){
 
         this.Name = Name;
         this.Stream = Stream;
@@ -23,6 +24,7 @@ public class STUDENT {
         this.Mother_Name = Mother_Name;
         this.Father_Name = Father_Name;
         this.Password = Password;
+        this.studentId = studentId;
     }
 
     public String getName() {
@@ -72,5 +74,12 @@ public class STUDENT {
     }
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 }
